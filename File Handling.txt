@@ -1,0 +1,168 @@
+ File Handling:
+==============
+
+Data ---> Storage
+
+Size:
+
+1.Small Data : File 
+
+
+2.Meduim Data : Database --> RDS | MYSQL | MSSQL 
+
+
+3.Large : Database | MongoDB | Postgre
+
+
+4.Very Large : Dataware House | Redshift | Snowflake
+
+
+Temporary vs Permenent
+
+
+File :
+
+1.Text file
+
+open ---> readable data 
+without third party application
+
+1.txt file
+2.csv file
+3.tsv file
+4.html
+5.python
+
+
+2.Binary File
+
+open ---> not readable format
+with third party application
+
+1.pdf
+2.audio
+3.video
+4.jpg /png
+
+
+
+===========================================================================================
+fp = open(filename,mode)
+
+
+filename : name of file /path 
+
+mode : 
+
+read - r
+
+write - w
+
+append - a
+
+read then write - r+
+
+write then read - w+
+
+append then read - a+ 
+
+exclusive mode - x
+
+
+read - r :
+=============
+
+fp = open(filename,'r') 
+
+or
+
+fp = open(filename)
+
+
+if file present then read
+if not then it will return FileNotFoundError
+
+1.read() : to read all content from file  
+
+Assigmement : word count --> frequency  {'word' : count}
+
+2.read(n) : to read number of characters
+
+
+3.readlines() : list of lines
+
+take one txt file
+
+1.emails  
+2.valid mobile numbers
+3.invalid numbers
+4.special chars
+5.word count 
+6.line count
+7.chars count
+
+def email_extraction(data):
+    words = []
+    for line in data:
+        for word in line.split():
+            if '@' in word:
+                words.append(word)
+    return words
+
+def main():
+    filename = "sample.txt" # give your filename
+    fp = open(filename,"r")
+    data = fp.readlines()
+    emails = email_extraction(data)
+    print(emails)
+if __name__=='__main__':
+    main()
+
+
+4.readline() : to read single line at a time [ iterator]
+
+
+2.write mode :  w
+
+fp = open(filename,'w')
+
+if file present then write
+if not then it will create file and write content
+
+
+def data_fetch(fname):
+    fp = open(fname, 'r')
+    data = fp.readlines()
+    return data
+
+
+def email_fetch(edata):
+    emails = []
+    for line in edata:
+        for word in line.split():
+            if '@' in word:
+                if word.endswith('.com'):
+                    emails.append(word)
+    return emails
+
+
+def main():
+    filename = 'test.txt'
+    data = data_fetch(filename)
+    email_list = email_fetch(data)
+    print(email_list)
+    print("end")
+
+
+if __name__=='__main__':
+    main()
+    
+    
+Assgiment:
+
+
+
+
+
+
+
